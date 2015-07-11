@@ -7,6 +7,7 @@ public class MusicObj : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		src = gameObject.GetComponent<AudioSource>();
+		src.clip = mySound;
 	}
 	
 	// Update is called once per frame
