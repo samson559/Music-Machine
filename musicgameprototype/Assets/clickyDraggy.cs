@@ -18,7 +18,9 @@ public class clickyDraggy : MonoBehaviour {
 			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if(Physics.Raycast(ray,out hit))
 			{
-				transform.position = new Vector3(hit.point.x,hit.point.y,transform.position.z);
+				float newx = transform.position.x + Input.GetAxis("Mouse X");
+				float newy = transform.position.y + Input.GetAxis("Mouse Y");
+				transform.position = new Vector3(newx,newy,transform.position.z);
 			}
 		}
 	}
