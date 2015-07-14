@@ -16,7 +16,6 @@ public class MusicObj : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		Debug.Log ("Hit");
 		src.PlayOneShot (mySound);
 	}
 }
