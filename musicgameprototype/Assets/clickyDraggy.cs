@@ -2,7 +2,7 @@
 
 using UnityEngine;
 using System.Collections;
-
+[RequireComponent (typeof(Collider2D))]
 public class clickyDraggy : MonoBehaviour {
 	[SerializeField] private float mouseTolerance = .1f;
 	private Transform lastTransform = null;
