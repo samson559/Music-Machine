@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//Dylan Noaker's code
+
+using UnityEngine;
 using System.Collections;
 
 public class clickyDraggy : MonoBehaviour {
