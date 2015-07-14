@@ -477,6 +477,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 304370768}
   m_RootOrder: 1
+--- !u!1 &558161834 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 176904, guid: aacf32f91727d4e6b921a087ae06450a, type: 2}
+  m_PrefabInternal: {fileID: 74371672}
+--- !u!114 &558161841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558161834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4992e926db756b42b34f5f98fbf20ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseTolerance: .100000001
 --- !u!1 &657964122
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +517,7 @@ TerrainCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 657964122}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: c0bb60ab0fd15884fad3639b61e44a10, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &657964124
