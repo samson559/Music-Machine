@@ -28,9 +28,20 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176904}
+<<<<<<< HEAD
+<<<<<<< HEAD
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.1000004, y: 47.5999985, z: 10}
+=======
+  m_LocalRotation: {x: 0, y: 0, z: -.47365275, w: .880711734}
+  m_LocalPosition: {x: -10.0200005, y: 20.2299995, z: 10}
+>>>>>>> origin/master
+  m_LocalScale: {x: 2.5, y: .5, z: 1}
+=======
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.34000015, y: 51.0499992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>> Dylan's-Branch
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,7 +55,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: b575ebd5e84874eee9fa3fc7e3d8e2c5, type: 2}
+  - {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -196,7 +207,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b575ebd5e84874eee9fa3fc7e3d8e2c5, type: 2}
+      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 176904}
