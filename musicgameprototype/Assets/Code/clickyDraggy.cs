@@ -1,5 +1,5 @@
 ﻿//Dylan Noaker's code
-
+//cannot enable/disable this script. 
 using UnityEngine;
 using System.Collections;
 [RequireComponent (typeof(Collider2D))]

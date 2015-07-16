@@ -1,61 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &176904
+--- !u!1 &151822
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 431882}
-  - 33: {fileID: 3389504}
-  - 23: {fileID: 2371068}
-  - 61: {fileID: 6153252}
-  - 114: {fileID: 11455050}
-  - 82: {fileID: 8297842}
-  - 50: {fileID: 5077152}
-  - 114: {fileID: 11455694}
-  m_Layer: 10
+  - 4: {fileID: 468168}
+  - 33: {fileID: 3356518}
+  - 23: {fileID: 2344756}
+  - 114: {fileID: 11448576}
+  - 82: {fileID: 8236492}
+  - 61: {fileID: 6160348}
+  m_Layer: 0
   m_Name: Piano Key A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &431882
+--- !u!4 &468168
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176904}
-<<<<<<< HEAD
-<<<<<<< HEAD
+  m_GameObject: {fileID: 151822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.1000004, y: 47.5999985, z: 10}
-=======
-  m_LocalRotation: {x: 0, y: 0, z: -.47365275, w: .880711734}
-  m_LocalPosition: {x: -10.0200005, y: 20.2299995, z: 10}
->>>>>>> origin/master
+  m_LocalPosition: {x: 10.8000002, y: 49.7999992, z: 10}
   m_LocalScale: {x: 2.5, y: .5, z: 1}
-=======
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.34000015, y: 51.0499992, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
->>>>>>> Dylan's-Branch
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2371068
+--- !u!23 &2344756
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176904}
+  m_GameObject: {fileID: 151822}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+  - {fileID: 2100000, guid: 002136cd57bb343da9ad4259cea04353, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -69,48 +56,32 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3389504
+--- !u!33 &3356518
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176904}
+  m_GameObject: {fileID: 151822}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!50 &5077152
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176904}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &6153252
+--- !u!61 &6160348
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176904}
+  m_GameObject: {fileID: 151822}
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: fcf7709253c254e55b051b11473a900a, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -4.76837158e-07, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
---- !u!82 &8297842
+  m_Size: {x: 1.00000024, y: 1}
+--- !u!82 &8236492
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176904}
+  m_GameObject: {fileID: 151822}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -122,7 +93,7 @@ AudioSource:
   Mute: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1.06147003
+  MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -174,41 +145,26 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &11455050
+--- !u!114 &11448576
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176904}
+  m_GameObject: {fileID: 151822}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c35d52e30c8eb46dda9796a8cb7af472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mySound: {fileID: 8300000, guid: 83d76a086f1e24e6aa7c0485c1100f44, type: 3}
---- !u!114 &11455694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58650e15a2607e44daa0f150e0061d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+    m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 176904}
+  m_RootGameObject: {fileID: 151822}
   m_IsPrefabParent: 1
