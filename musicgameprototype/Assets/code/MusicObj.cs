@@ -16,6 +16,10 @@ public class MusicObj : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		src.PlayOneShot (mySound);
+		// this code makes sure the sound only plays on the beat
+		GameObject metronome = GameObject.Find ("Metronome");
+		float delay = ((MetronomeBehavior)metronome.GetComponent<MetronomeBehavior>()).getSecToNextBeat();
+		src.PlayDelayed (delay);
+		//src.PlayOneShot (mySound);
 	}
 }

@@ -124,7 +124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22448960, guid: 4bc3dacac89b82f4695e95019cfe61dc, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22448960, guid: 4bc3dacac89b82f4695e95019cfe61dc, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -206,11 +206,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400382, guid: 3822d116c1d2846c1ab5581ac01978b3, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3822d116c1d2846c1ab5581ac01978b3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &764182684 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 126832, guid: 7347045a5aa90457084694fa6fffa533, type: 2}
+  m_PrefabInternal: {fileID: 1402278558}
+--- !u!114 &764182685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 764182684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4992e926db756b42b34f5f98fbf20ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseTolerance: .100000001
 --- !u!1001 &832021901
 Prefab:
   m_ObjectHideFlags: 0
@@ -248,7 +264,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 424694, guid: fe677566fad874f708aec48ddcaaf260, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe677566fad874f708aec48ddcaaf260, type: 2}
@@ -311,6 +327,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 554a5f721715178469ad00e905e92c0e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &948322817 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 118202, guid: aff1363079fda4bda978f36855ad8031, type: 2}
+  m_PrefabInternal: {fileID: 1044374645}
+--- !u!114 &948322818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 948322817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4992e926db756b42b34f5f98fbf20ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseTolerance: .100000001
 --- !u!114 &1041044478 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11466242, guid: 4bc3dacac89b82f4695e95019cfe61dc,
@@ -359,6 +391,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aff1363079fda4bda978f36855ad8031, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1153016884 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 180346, guid: 646d451072f1e4b0291da7b30008724a, type: 2}
+  m_PrefabInternal: {fileID: 1916024426}
+--- !u!114 &1153016885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1153016884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4992e926db756b42b34f5f98fbf20ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseTolerance: .100000001
+--- !u!114 &1153016891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1153016884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4992e926db756b42b34f5f98fbf20ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseTolerance: .100000001
 --- !u!1001 &1402278558
 Prefab:
   m_ObjectHideFlags: 0
@@ -396,7 +456,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 480956, guid: 7347045a5aa90457084694fa6fffa533, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7347045a5aa90457084694fa6fffa533, type: 2}
@@ -438,7 +498,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 431124, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11493720, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
       propertyPath: bpmText
@@ -448,9 +508,29 @@ Prefab:
       propertyPath: playTick
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11493720, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
+      propertyPath: bpm
+      value: 160
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1882619847 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 175372, guid: fe677566fad874f708aec48ddcaaf260, type: 2}
+  m_PrefabInternal: {fileID: 832021901}
+--- !u!114 &1882619848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882619847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4992e926db756b42b34f5f98fbf20ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseTolerance: .100000001
 --- !u!1001 &1916024426
 Prefab:
   m_ObjectHideFlags: 0
