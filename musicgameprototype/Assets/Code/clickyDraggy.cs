@@ -10,6 +10,7 @@ public class clickyDraggy : MonoBehaviour {
 	private RaycastHit hit;
 	private Vector3 screenPoint;
 	private Vector3 offset;
+	private float prevMouse;
 	//This is from http://answers.unity3d.com/questions/12322/drag-gameobject-with-mouse.html
 	void OnMouseDown()
 	{
@@ -21,11 +22,17 @@ public class clickyDraggy : MonoBehaviour {
 	
 	void OnMouseDrag()
 	{
+
+		if (Input.GetButton ("rotateOption")) {
+			transform.Rotate (new Vector3 (0, 0, Input.mousePosition.y - prevMouse));
+			prevMouse = Input.mousePosition.y;
+			return;
+		}
 		Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 		
 		Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint)+ offset;
 		transform.position = curPosition;
-		
+		prevMouse = Input.mousePosition.y;
 	}
 	// end citation
 	// Use this for initialization
