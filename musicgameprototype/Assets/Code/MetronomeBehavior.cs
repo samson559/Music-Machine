@@ -10,8 +10,8 @@ public class MetronomeBehavior : MonoBehaviour {
 
 	[SerializeField] float bpm;
 	[SerializeField] private AudioClip tick;
-	[SerializeField] public bool playTick;
-	public Text bpmText;
+	public bool playTick;
+ 	public Text bpmText;
 
 	private AudioSource tickSource;
 	private float secToNextBeat; // seconds to next beat
