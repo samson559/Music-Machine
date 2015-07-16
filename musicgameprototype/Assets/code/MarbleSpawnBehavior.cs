@@ -10,7 +10,9 @@ using System.Collections;
 
 public class MarbleSpawnBehavior : MonoBehaviour {
 
-	bool complete; // once this is true, no more ball spawning!
+
+
+	private bool complete; // once this is true, no more ball spawning!
 
 	// Use this for initialization
 	void Start () {
@@ -37,5 +39,9 @@ public class MarbleSpawnBehavior : MonoBehaviour {
 
 			complete = true;
 		}
+	}
+
+	public void setComplete(bool c) {
+		complete = c;
 	}
 }

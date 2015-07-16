@@ -7,17 +7,17 @@ using System.Collections;
  */
 
 public class MarbleBehavior : MonoBehaviour {
+	private Vector3 origin;
 	private Transform t;
 
 	// Use this for initialization
 	void Start () {
 		t = GetComponent<Transform>();
+		origin = new Vector3 (t.position.x, t.position.y, t.position.z); 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (t.position.y <= -30) { // Destroy marble after 
-			Destroy(gameObject);
-		}
+
 	}
 }
