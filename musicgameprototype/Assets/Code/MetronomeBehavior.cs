@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 /*
@@ -9,11 +10,13 @@ public class MetronomeBehavior : MonoBehaviour {
 
 	[SerializeField] float bpm;
 	[SerializeField] private AudioClip tick;
-	[SerializeField] private bool playTick;
+	[SerializeField] public bool playTick;
+	public Text bpmText;
 
 	private AudioSource tickSource;
 	private float secToNextBeat; // seconds to next beat
 	private float beatInterval;
+
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +30,7 @@ public class MetronomeBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		secToNextBeat -= Time.deltaTime;
+		bpmText.text = "BPM: " + ((int)bpm).ToString();
 
 		if (secToNextBeat <= 0) {
 			secToNextBeat += beatInterval;
