@@ -9,15 +9,14 @@ public class MetronomeBehavior : MonoBehaviour {
 
 	[SerializeField] float bpm;
 	[SerializeField] private AudioClip tick;
+	[SerializeField] private bool playTick;
 
 	private AudioSource tickSource;
 	private float secToNextBeat; // seconds to next beat
 	private float beatInterval;
-	private bool playTick;
 
 	// Use this for initialization
 	void Start () {
-		playTick = true;
 		tickSource = gameObject.GetComponent<AudioSource>();
 		tickSource.clip = tick;
 
@@ -27,9 +26,7 @@ public class MetronomeBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float timeScale = Time.timeScale; // if the game is paused, timeScale will equal 0
-		secToNextBeat -= Time.deltaTime * timeScale;
-		Debug.Log (secToNextBeat);
+		secToNextBeat -= Time.deltaTime;
 
 		if (secToNextBeat <= 0) {
 			secToNextBeat += beatInterval;
