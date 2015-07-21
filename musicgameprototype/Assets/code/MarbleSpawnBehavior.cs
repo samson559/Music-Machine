@@ -21,7 +21,7 @@ public class MarbleSpawnBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!complete) {
+		if (!complete && Time.timeScale != 0) {
 			Transform marbleT, spawnT; // marble's transform and the spawner's transform
 			GameObject marble; // the marble to be instatiated
 

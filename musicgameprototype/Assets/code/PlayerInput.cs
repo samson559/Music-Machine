@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour {
 	private Vector3 dragOrigin;
 
 	/*
-	 * This class handles player input, such as pressing the pause button to pause playback.
+	 * This class handles player input, such as pressing the pause button to pause playback, pressing the reset button to reset the level, etc.
 	 * It is attached to the Camera prefab.
 	 */
 
