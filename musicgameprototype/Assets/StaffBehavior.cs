@@ -20,35 +20,35 @@ public class StaffBehavior : MonoBehaviour {
 	[SerializeField] public Sprite sprite_3; // top time signature number (the "3" in "3/4" time)
 	[SerializeField] public Sprite sprite_4; // bottom time signature number (the "4" in "3/4" time)
 	[SerializeField] public TextAsset composition;
-	
+
 	private int counter;
-	
+
 	public float speed; // speed at which the playhead moves
 	public bool playing; // is the staff playing music?
 	public float playheadOffset, playheadLimit; // offset from screen center, make room for time signature, clef
-	
+
 	private Note[] noteArray;
-	
+
 	//private Vector3 playheadPosit;
-	
+
 	private float minX, maxX, rightLimit;
-	
+
 	// Use this for initialization
 	void Start () {
 		playing = true;
-		
+
 		counter = 0;
 		
 		RectTransform staffTransform = staff.GetComponent<RectTransform>() as RectTransform;
 		RectTransform phTransform = playhead.GetComponent<RectTransform>() as RectTransform;
-		
+
 		rightLimit = 150 * canvas.scaleFactor; // test value
-		
+
 		minX = phTransform.position.x;
 		maxX = minX + (staffTransform.rect.width * canvas.scaleFactor) - rightLimit;
-		
+
 		speed = 0f;
-		
+
 		loadComposition ();
 	}
 	
@@ -96,24 +96,22 @@ public class StaffBehavior : MonoBehaviour {
 			float playheadRange = maxX - minX;
 			float scrollScreenTime = (60 * measuresDisplayed * timesig_top) / bpm;
 			speed = playheadRange / scrollScreenTime;
-			
+
 			if(phTransform.position.x >= maxX) phTransform.position = new Vector3 (minX, playheadOrigin.y, playheadOrigin.z);
 			else phTransform.position = new Vector3 (playheadOrigin.x + (speed * Time.deltaTime), playheadOrigin.y, playheadOrigin.z);
 		}
 		
 	}
-	
 	public void loadComposition() {
-		
+
 		string[] lines = composition.ToString().Split('\n');
 		noteArray = new Note[lines.Length];
-		
+
 		for(int i = 0; i < noteArray.Length; i++) {
 			string[] values = lines[i].Split(',');
 			noteArray[i] = new Note(values[0], float.Parse(values[1].ToString()));
 		}
 	}
-	
 	public void setPlaying(bool play) {
 		playing = play;
 	}

@@ -601,6 +601,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aff1363079fda4bda978f36855ad8031, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< HEAD
 <<<<<<< HEAD:musicgameprototype/Assets/Levels/DemoLevel.unity
 --- !u!1 &1153016884 stripped
 GameObject:
@@ -638,6 +639,8 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 1441332111}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 >>>>>>> SafetyBranch:musicgameprototype/Assets/DemoLevel.unity
+=======
+>>>>>>> origin/master
 --- !u!1001 &1402278558
 Prefab:
   m_ObjectHideFlags: 0
@@ -859,6 +862,7 @@ Prefab:
       value: 
 <<<<<<< HEAD:musicgameprototype/Assets/Levels/DemoLevel.unity
       objectReference: {fileID: 884956361}
+<<<<<<< HEAD
 =======
       objectReference: {fileID: 1165094421}
     - target: {fileID: 11493720, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
@@ -870,6 +874,12 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
 >>>>>>> SafetyBranch:musicgameprototype/Assets/DemoLevel.unity
+=======
+    - target: {fileID: 11493720, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
+      propertyPath: playTick
+      value: 1
+      objectReference: {fileID: 0}
+>>>>>>> origin/master
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
   m_IsPrefabParent: 0
@@ -898,11 +908,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 498246, guid: 646d451072f1e4b0291da7b30008724a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.26000023
+      value: -5.42999983
       objectReference: {fileID: 0}
     - target: {fileID: 498246, guid: 646d451072f1e4b0291da7b30008724a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.69000006
+      value: 3.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 498246, guid: 646d451072f1e4b0291da7b30008724a, type: 2}
       propertyPath: m_LocalPosition.z
