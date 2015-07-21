@@ -20,4 +20,12 @@ public class StageData : MonoBehaviour {
 	void Update () {
 	
 	}
+	
+	public float getStageWidth() {
+		return stageWidth;
+	}
+	
+	public float getStageHeight() {
+		return stageHeight;
+	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerInput : MonoBehaviour {
 
-	public float dragSpeed = -0.5f;
+	public float dragSpeed = 0.5f;
 	private Vector3 dragOrigin;
 
 	/*

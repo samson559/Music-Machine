@@ -11,7 +11,7 @@ public class MetronomeBehavior : MonoBehaviour {
 	[SerializeField] private float bpm;
 	[SerializeField] private AudioClip tick;
 	[SerializeField] public bool playTick;
-	public Text bpmText;
+	[SerializeField] public Text bpmText; // reference to HUD object to show BPM to player
 
 	private AudioSource tickSource;
 	private float secToNextBeat; // seconds to next beat
