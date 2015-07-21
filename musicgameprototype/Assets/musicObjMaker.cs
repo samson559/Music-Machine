@@ -14,7 +14,8 @@ public class musicObjMaker : MonoBehaviour {
 	}
 	public void makeNote()
 	{
-		GameObject go = Instantiate<GameObject> (note);
+		//Vector3 where = new Vector3 (Camera.main.transform.position.x, Camera.main.transform.position.x, 0);
+		Object go = Instantiate(note,Vector3.zero,Quaternion.identity);
 	}
 
 }

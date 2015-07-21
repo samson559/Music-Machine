@@ -19,7 +19,8 @@ public class PlayerInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if(Input.GetButton ("panOption")) mousePan ();
+		if(Input.GetButton ("panOption")) 
+			mousePan ();
 		
 		if (Input.GetButtonDown ("Pause")) {
 			if(Time.timeScale == 0) Time.timeScale = 1; // restart the simulation;
