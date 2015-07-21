@@ -375,34 +375,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aff1363079fda4bda978f36855ad8031, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1153016884 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 180346, guid: 646d451072f1e4b0291da7b30008724a, type: 2}
-  m_PrefabInternal: {fileID: 1916024426}
---- !u!114 &1153016885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1153016884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4992e926db756b42b34f5f98fbf20ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseTolerance: .100000001
---- !u!114 &1153016891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1153016884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4992e926db756b42b34f5f98fbf20ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseTolerance: .100000001
 --- !u!1001 &1402278558
 Prefab:
   m_ObjectHideFlags: 0
@@ -488,6 +460,10 @@ Prefab:
       propertyPath: bpmText
       value: 
       objectReference: {fileID: 884956361}
+    - target: {fileID: 11493720, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
+      propertyPath: playTick
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
   m_IsPrefabParent: 0
@@ -516,11 +492,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 498246, guid: 646d451072f1e4b0291da7b30008724a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.26000023
+      value: -5.42999983
       objectReference: {fileID: 0}
     - target: {fileID: 498246, guid: 646d451072f1e4b0291da7b30008724a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.69000006
+      value: 3.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 498246, guid: 646d451072f1e4b0291da7b30008724a, type: 2}
       propertyPath: m_LocalPosition.z
