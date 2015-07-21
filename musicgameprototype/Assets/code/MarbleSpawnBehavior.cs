@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System.Collections;
 
 /*
@@ -10,9 +10,8 @@ using System.Collections;
 
 public class MarbleSpawnBehavior : MonoBehaviour {
 
-
-
 	private bool complete; // once this is true, no more ball spawning!
+	[SerializeField] private GameObject myMarble;
 
 	// Use this for initialization
 	void Start () {
@@ -24,19 +23,18 @@ public class MarbleSpawnBehavior : MonoBehaviour {
 		if (!complete && Time.timeScale != 0) {
 			Transform marbleT, spawnT; // marble's transform and the spawner's transform
 			GameObject marble; // the marble to be instatiated
-
 			//this is weird code... I found it somewhere... I'm not sure what's going on... but it works...
-			Object prefab = AssetDatabase.LoadAssetAtPath("Assets/CustomPrefabs/Marble.prefab", typeof(GameObject));
-			marble = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
-
+//			Object prefab = Resources.Load("Resources/Marble.prefab", typeof(GameObject));
+//			marble = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+			marble = Instantiate(myMarble,Vector3.zero, Quaternion.identity) as GameObject;
 			marbleT = marble.GetComponent<Transform>();
 			spawnT = GetComponent<Transform>();
-
+			
 			Vector3 spawnPosition = spawnT.position;
 			Vector3 newMarblePosition = new Vector3(spawnPosition.x, spawnPosition.y, spawnPosition.z);
-
+			
 			marbleT.position = newMarblePosition;
-
+			
 			complete = true;
 		}
 	}

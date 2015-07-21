@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11448576}
   - 82: {fileID: 8236492}
   - 61: {fileID: 6160348}
+  - 114: {fileID: 11476034}
   m_Layer: 0
   m_Name: Piano Key A
   m_TagString: Untagged
@@ -157,6 +158,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySound: {fileID: 8300000, guid: 83d76a086f1e24e6aa7c0485c1100f44, type: 3}
+--- !u!114 &11476034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4992e926db756b42b34f5f98fbf20ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseTolerance: .100000001
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

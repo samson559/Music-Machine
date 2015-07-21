@@ -2,31 +2,34 @@
 using System.Collections;
 
 public class PlayerInput : MonoBehaviour {
-
-	public float dragSpeed = 0.5f;
+	public float dragSpeed = -0.5f;
 	private Vector3 dragOrigin;
 
 	/*
 	 * This class handles player input, such as pressing the pause button to pause playback, pressing the reset button to reset the level, etc.
 	 * It is attached to the Camera prefab.
 	 */
-
+	
 	// Use this for initialization
 	void Start () {
-		Time.timeScale = 0; // start the simualtion paused.
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if(Input.GetButton ("panOption")) mousePan ();
+		if(Input.GetButton ("panOption")) 
+			mousePan ();
 
 		if (Input.GetButtonDown ("Pause")) {
-			if(Time.timeScale == 0) Time.timeScale = 1; // restart the simulation;
+			if(Time.timeScale == 0) 
+				Time.timeScale = 1; // restart the simulation;
 			else Time.timeScale = 0; // pause the simulation.
 		}
-
+		
 	}
+	
+
 
 	void mousePan() {
 		if (Input.GetMouseButtonDown(0))
