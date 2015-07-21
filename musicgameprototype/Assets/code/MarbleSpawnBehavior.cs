@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System.Collections;
 
 /*
@@ -24,9 +24,8 @@ public class MarbleSpawnBehavior : MonoBehaviour {
 		if (!complete) {
 			Transform marbleT, spawnT; // marble's transform and the spawner's transform
 			GameObject marble; // the marble to be instatiated
-			
 			//this is weird code... I found it somewhere... I'm not sure what's going on... but it works...
-			Object prefab = AssetDatabase.LoadAssetAtPath("Assets/CustomPrefabs/Marble.prefab", typeof(GameObject));
+			Object prefab = Resources.Load("Marble.prefab", typeof(GameObject));
 			marble = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 			
 			marbleT = marble.GetComponent<Transform>();

@@ -8,7 +8,7 @@ using System.Collections;
 
 public class MetronomeBehavior : MonoBehaviour {
 
-	[SerializeField] float bpm;
+	[SerializeField] private float bpm;
 	[SerializeField] private AudioClip tick;
 	public bool playTick;
  	public Text bpmText;
@@ -44,6 +44,10 @@ public class MetronomeBehavior : MonoBehaviour {
 
 	public void isPlayTick(bool p) {
 		playTick = p;
+	}
+	public float getBPM()
+	{
+		return bpm;
 	}
 
 }
