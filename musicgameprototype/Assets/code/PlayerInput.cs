@@ -67,18 +67,17 @@ public class PlayerInput : MonoBehaviour {
 		cameraT.Translate (cameraMove);
 
 		// constrain camera to stage size
-		float newX = cameraT.position.x;
-		float newY = cameraT.position.y;
-		if (cameraT.position.x < minX)
-			newX = minX;
-		else if (cameraT.position.x > maxX)
-			newX = maxX;
-		if (cameraT.position.y < minY)
-			newY = minY;
-		else if (cameraT.position.y > maxY)
-			newY = maxY;
+		Vector3 newPosit = new Vector3 (cameraT.position.x, cameraT.position.y, cameraT.position.z);
+		if (newPosit.x < minX)
+			newPosit = new Vector3 (minX, cameraT.position.y, cameraT.position.z);
+		else if (newPosit.x > maxX)
+			newPosit = new Vector3 (maxX, cameraT.position.y, cameraT.position.z);
+		if (newPosit.y < minY)
+			newPosit = new Vector3 (cameraT.position.x, minY, cameraT.position.z);
+		else if (newPosit.y > maxY)
+			newPosit = new Vector3 (cameraT.position.x, maxY, cameraT.position.z);
 
-		cameraT.position = new Vector3 (newX, newY, cameraT.position.z);
+		cameraT.position = newPosit;
 
 
 		Debug.Log (cameraT.position);  

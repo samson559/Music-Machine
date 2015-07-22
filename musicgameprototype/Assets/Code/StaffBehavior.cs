@@ -42,7 +42,7 @@ public class StaffBehavior : MonoBehaviour {
 		RectTransform staffTransform = staff.GetComponent<RectTransform>() as RectTransform;
 		RectTransform phTransform = playhead.GetComponent<RectTransform>() as RectTransform;
 
-		rightLimit = 150 * canvas.scaleFactor; // test value
+		rightLimit = 400 * canvas.scaleFactor; // test value
 
 		minX = phTransform.position.x;
 		maxX = minX + (staffTransform.rect.width * canvas.scaleFactor) - rightLimit;
