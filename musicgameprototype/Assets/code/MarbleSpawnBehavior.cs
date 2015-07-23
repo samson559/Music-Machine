@@ -21,22 +21,30 @@ public class MarbleSpawnBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!complete && Time.timeScale != 0) {
-			Transform marbleT, spawnT; // marble's transform and the spawner's transform
-			GameObject marble; // the marble to be instatiated
-			//this is weird code... I found it somewhere... I'm not sure what's going on... but it works...
-//			Object prefab = Resources.Load("Resources/Marble.prefab", typeof(GameObject));
-//			marble = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
-			marble = Instantiate(myMarble,Vector3.zero, Quaternion.identity) as GameObject;
-			marbleT = marble.GetComponent<Transform>();
-			spawnT = GetComponent<Transform>();
-			
-			Vector3 spawnPosition = spawnT.position;
-			Vector3 newMarblePosition = new Vector3(spawnPosition.x, spawnPosition.y, spawnPosition.z);
-			
-			marbleT.position = newMarblePosition;
-			
-			complete = true;
+			spawnMarble();
 		}
+	}
+
+	private void spawnMarble() {
+		Transform marbleT, spawnT; // marble's transform and the spawner's transform
+		GameObject marble; // the marble to be instatiated
+		//this is weird code... I found it somewhere... I'm not sure what's going on... but it works...
+		//			Object prefab = Resources.Load("Resources/Marble.prefab", typeof(GameObject));
+		//			marble = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+		marble = Instantiate(myMarble,Vector3.zero, Quaternion.identity) as GameObject;
+		marbleT = marble.GetComponent<Transform>();
+		spawnT = GetComponent<Transform>();
+		
+		Vector3 spawnPosition = spawnT.position;
+		Vector3 newMarblePosition = new Vector3(spawnPosition.x, spawnPosition.y, spawnPosition.z);
+		
+		marbleT.position = newMarblePosition;
+		
+		complete = true;
+	}
+
+	void OnMouseUp() {
+		spawnMarble ();
 	}
 
 	public void setComplete(bool c) {

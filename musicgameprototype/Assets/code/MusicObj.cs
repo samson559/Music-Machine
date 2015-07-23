@@ -14,12 +14,17 @@ public class MusicObj : MonoBehaviour {
 	void Update () {
 	
 	}
+
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		// this code makes sure the sound only plays on the beat
-		GameObject metronome = GameObject.Find ("Metronome");
-		float delay = ((MetronomeBehavior)metronome.GetComponent<MetronomeBehavior>()).getSecToNextBeat();
-		src.PlayDelayed (delay);
-		//src.PlayOneShot (mySound);
+		
+		MetronomeBehavior metronome = GameObject.Find ("Metronome").GetComponent<MetronomeBehavior>();
+		if (metronome.isTimeWithMetronome()) {
+			// this code makes sure the sound only plays on the beat
+			float delay = metronome.getSecToNextBeat ();
+			src.PlayDelayed (delay);
+		} else {
+			src.PlayOneShot (mySound);
+		}
 	}
 }

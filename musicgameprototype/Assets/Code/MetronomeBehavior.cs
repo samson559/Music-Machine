@@ -13,6 +13,9 @@ public class MetronomeBehavior : MonoBehaviour {
 
 	[SerializeField] public bool playTick;
 	[SerializeField] public Text bpmText; // reference to HUD object to show BPM to player
+	
+	[SerializeField] public bool timeSoundWithMetronome;
+
 	private AudioSource tickSource;
 	private float secToNextBeat; // seconds to next beat
 	private float beatInterval;
@@ -46,8 +49,20 @@ public class MetronomeBehavior : MonoBehaviour {
 		return bpm;
 	}
 
-	public void isPlayTick(bool p) {
+	public void setPlayTick(bool p) {
 		playTick = p;
+	}
+	
+	public void startPlayTick() {
+		playTick = true;
+	}
+	
+	public void stopPlayTick() {
+		playTick = false;
+	}
+
+	public bool isTimeWithMetronome() {
+		return timeSoundWithMetronome;
 	}
 
 }

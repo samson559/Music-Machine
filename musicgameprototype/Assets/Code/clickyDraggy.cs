@@ -12,7 +12,7 @@ public class clickyDraggy : MonoBehaviour {
 	private Vector3 offset;
 	private float prevMouse;
 	//This is from http://answers.unity3d.com/questions/12322/drag-gameobject-with-mouse.html
-	void OnMouseDown()
+	public void OnMouseDown()
 	{
 		// delete when hold 'deleteOption' key
 		if (Input.GetButton ("deleteOption")) {

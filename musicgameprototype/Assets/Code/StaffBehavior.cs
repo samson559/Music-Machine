@@ -24,20 +24,20 @@ public class StaffBehavior : MonoBehaviour {
 	private int counter;
 
 	public float speed; // speed at which the playhead moves
-	public bool playing; // is the staff playing music?
+	public bool playing, compositionLoaded; // is the staff playing music?
 	public float playheadOffset, playheadLimit; // offset from screen center, make room for time signature, clef
-
-	private Note[] noteArray;
-
-	//private Vector3 playheadPosit;
-
+	private Note[] noteArray; // array of notes which are loaded from txt file
+	private int page, totalPages; // current page of composition;
 	private float minX, maxX, rightLimit;
 
 	// Use this for initialization
 	void Start () {
-		playing = true;
+		playing = false;
 
 		counter = 0;
+		page = 0;
+		totalPages = 0;
+		compositionLoaded = false;
 		
 		RectTransform staffTransform = staff.GetComponent<RectTransform>() as RectTransform;
 		RectTransform phTransform = playhead.GetComponent<RectTransform>() as RectTransform;
@@ -88,14 +88,17 @@ public class StaffBehavior : MonoBehaviour {
 		
 		speed = 0f;
 		
-		if (playing) {
+		if (playing && compositionLoaded) {
 			GameObject metronome = GameObject.Find ("Metronome");
 			
 			// calculate speed
 			float bpm = ((MetronomeBehavior)metronome.GetComponent<MetronomeBehavior> ()).getBPM ();
 			float playheadRange = maxX - minX;
+			//float distPerBeat = playheadRange / (timesig_top * measuresDisplayed);
+			//float distToNextBeat = (Mathf.Floor(phTransform.position.x/playheadRange) * distPerBeat);
 			float scrollScreenTime = (60 * measuresDisplayed * timesig_top) / bpm;
 			speed = playheadRange / scrollScreenTime;
+			//speed = distToNextBeat/metronome.GetComponent<MetronomeBehavior>().getSecToNextBeat();
 
 			if(phTransform.position.x >= maxX) phTransform.position = new Vector3 (minX, playheadOrigin.y, playheadOrigin.z);
 			else phTransform.position = new Vector3 (playheadOrigin.x + (speed * Time.deltaTime), playheadOrigin.y, playheadOrigin.z);
@@ -109,8 +112,15 @@ public class StaffBehavior : MonoBehaviour {
 
 		for(int i = 0; i < noteArray.Length; i++) {
 			string[] values = lines[i].Split(',');
-			noteArray[i] = new Note(values[0], float.Parse(values[1].ToString()));
+			noteArray[i] = new Note(values[0], int.Parse(values[1].ToString()));
 		}
+
+		page = 0;
+		totalPages = Mathf.FloorToInt (calcBeatsInCompotion(noteArray) / (timesig_top * measuresDisplayed));
+
+		Debug.Log (totalPages);
+
+		compositionLoaded = true;
 	}
 	public void setPlaying(bool play) {
 		playing = play;
@@ -119,51 +129,43 @@ public class StaffBehavior : MonoBehaviour {
 	public bool isPlaying() {
 		return playing;
 	}
+
+	public void startPlaying() {
+		playing = true;
+	}
+
+	public void stopPlaying() {
+		playing = false;
+	}
+
+	private int calcBeatsInCompotion(Note[] array) {
+		int totalBeats = 0;
+
+		for (int i = 0; i < array.Length; i++) {
+			totalBeats += array[i].getBeatsPlayed();
+		}
+
+		return totalBeats;
+	}
 }
 
 
 class Note {
 	
 	private string name;
-	private float duration;
-	private AudioClip clip;
-	private float beatsPlayed;
+	private int beatsPlayed;
 	
-	public Note(string name, float d) {
+	public Note(string name, int bp) {
 		this.name = name;
-		this.duration = d;
-		beatsPlayed = 0;
-		
-		switch(name) {
-		case "C3":
-			clip = Resources.Load("SFX/Piano/C3.wav") as AudioClip;
-			break;
-		case "D3":
-			clip = Resources.Load("SFX/Piano/D3.wav") as AudioClip;
-			break;
-		case "E3":
-			clip = Resources.Load("SFX/Piano/E3.wav") as AudioClip;
-			break;
-		case "F3":
-			clip = Resources.Load("SFX/Piano/F3.wav") as AudioClip;
-			break;
-		case "G3":
-			clip = Resources.Load("SFX/Piano/G3.wav") as AudioClip;
-			break;
-		case "A3":
-			clip = Resources.Load("SFX/Piano/A3.wav") as AudioClip;
-			break;
-		case "B3":
-			clip = Resources.Load("SFX/Piano/B3.wav") as AudioClip;
-			break;
-		case "C4":
-			clip = Resources.Load("SFX/Piano/C4.wav") as AudioClip;
-			break;
-		}
+		beatsPlayed = bp;
 	}
-	
-	public AudioClip getAudioClip() {
-		return clip;
+
+	public int getBeatsPlayed() {
+		return beatsPlayed;
+	}
+
+	public string getName()  {
+		return name;
 	}
 	
 }
