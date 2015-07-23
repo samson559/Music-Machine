@@ -14,6 +14,12 @@ public class clickyDraggy : MonoBehaviour {
 	//This is from http://answers.unity3d.com/questions/12322/drag-gameobject-with-mouse.html
 	void OnMouseDown()
 	{
+		// delete when hold 'deleteOption' key
+		if (Input.GetButton ("deleteOption")) {
+			Destroy (gameObject);
+			return;
+		}
+
 		screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 		
 		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
@@ -43,20 +49,7 @@ public class clickyDraggy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		/*
-		if(Input.GetMouseButton(0))
-		{
-			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if(Physics.Raycast(ray,out hit))
-			{
-				float newx = transform.position.x + Input.GetAxis("Mouse X");
-				float newy = transform.position.y + Input.GetAxis("Mouse Y");
-				//Debug.Log (hit.point);
-				//Debug.DrawRay(ray.origin,hit.point);
-				transform.position = new Vector3(newx,newy,transform.position.z);
-			}
-		}
-		*/
+
 	}
 
 

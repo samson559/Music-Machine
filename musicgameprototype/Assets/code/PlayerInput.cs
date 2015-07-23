@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class PlayerInput : MonoBehaviour {
-	public float dragSpeed = -0.5f;
 	private Vector3 dragOrigin;
 	private float minX, minY, maxX, maxY; // min and max X and Y position for camera, based on size of stage
 
@@ -54,17 +53,15 @@ public class PlayerInput : MonoBehaviour {
 	void mousePan() {
 		if (Input.GetMouseButtonDown(0)) {
 			dragOrigin = Input.mousePosition;
-			return;
 		}
 		
 		if (!Input.GetMouseButton(0)) return;
 		
 		Vector3 cameraPos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
-		Vector3 cameraMove = new Vector3(cameraPos.x * dragSpeed, cameraPos.y * dragSpeed, 0);
 
 		Transform cameraT = gameObject.GetComponent<Transform> () as Transform;
 		
-		cameraT.Translate (cameraMove);
+		cameraT.Translate (-cameraPos);
 
 		// constrain camera to stage size
 		Vector3 newPosit = new Vector3 (cameraT.position.x, cameraT.position.y, cameraT.position.z);
@@ -80,6 +77,6 @@ public class PlayerInput : MonoBehaviour {
 		cameraT.position = newPosit;
 
 
-		Debug.Log (cameraT.position);  
+		//Debug.Log (cameraT.position);  
 	}
 }
