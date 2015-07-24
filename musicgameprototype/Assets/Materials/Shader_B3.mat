@@ -57,7 +57,7 @@ Material:
       data:
         first:
           name: _OutlineColor
-        second: {r: 1, g: 0, b: .90196079, a: 1}
+        second: {r: .568627477, g: 0, b: .490772843, a: 1}
       data:
         first:
           name: _Emission
