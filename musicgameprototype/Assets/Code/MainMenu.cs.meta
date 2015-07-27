@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 802ff0f5b64cf634ab567c7736168867
+timeCreated: 1437861694
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Mainmenutexture: {fileID: 2800000, guid: a0a2089a795b18d458fd5f84c682dce8, type: 3}
+  - Level1Thumb: {instanceID: 0}
+  - Level2Thumb: {instanceID: 0}
+  - Level3Thumb: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
