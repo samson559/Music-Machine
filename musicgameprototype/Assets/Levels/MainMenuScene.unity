@@ -242,7 +242,7 @@ GameObject:
   - 4: {fileID: 1257778828}
   - 114: {fileID: 1257778827}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MenuDriver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,9 +260,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mainmenutexture: {fileID: 2800000, guid: a0a2089a795b18d458fd5f84c682dce8, type: 3}
-  Level1Thumb: {fileID: 0}
-  Level2Thumb: {fileID: 0}
-  Level3Thumb: {fileID: 0}
+  LevelThumb:
+  - {fileID: 2800000, guid: 66a228034856e4e52afede7ec9dc0a9c, type: 3}
+  levelnames:
+  - Levels/Challenge_Scene
 --- !u!4 &1257778828
 Transform:
   m_ObjectHideFlags: 0

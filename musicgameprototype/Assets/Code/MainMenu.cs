@@ -4,10 +4,8 @@ using UnityEngine;
 using System.Collections;
 public class MainMenu : MonoBehaviour {
 	[SerializeField] private Texture Mainmenutexture;
-	[SerializeField] private Texture Level1Thumb;
-	[SerializeField] private Texture Level2Thumb;
-	[SerializeField] private Texture Level3Thumb;
-
+	[SerializeField] private Texture[] LevelThumb;
+	[SerializeField] private string[] levelnames;
 
 
 
@@ -18,6 +16,7 @@ public class MainMenu : MonoBehaviour {
 ///Button display
 		/// Make sure levels are included in build settings and adhere to naming convention "LevelX".
 		/// level1
+		/*
 		if (GUI.Button (new Rect(Screen.width * .5f, Screen.height * .5f, Screen.width * .5f, Screen.height * .1f), new GUIContent("Play Level1",Level1Thumb),"")) {
 			Application.LoadLevel(1);
 		}
@@ -28,6 +27,16 @@ public class MainMenu : MonoBehaviour {
 		///level2
 		if (GUI.Button (new Rect(Screen.width * .5f, Screen.height * .7f, Screen.width * .5f, Screen.height * .1f), new GUIContent("Play Level3",Level3Thumb),"")) {
 			Application.LoadLevel("Level3");
+		}
+		*/
+		int i = 1;
+		foreach (Texture T in LevelThumb) {
+			if (GUI.Button (new Rect(Screen.width * .5f, Screen.height * (.5f+(i*.1f)), 
+			                         Screen.width * .5f, Screen.height * .1f),
+			                		new GUIContent("Play Level2",T),""))
+			{
+				Application.LoadLevel(levelnames[i-1]);
+			}
 		}
 
 	}
