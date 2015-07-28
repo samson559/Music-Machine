@@ -282,7 +282,9 @@ public class StaffBehavior : MonoBehaviour {
 		GameObject[] marbleArray = GameObject.FindGameObjectsWithTag ("Marble");
 		for (int i = 0; i < marbleArray.Length; i++) {
 			Rigidbody2D mRigidBody = marbleArray[i].GetComponent<Rigidbody2D> ();
+			MarbleBehavior mBehavior = marbleArray[i].GetComponent<MarbleBehavior> ();
 			mRigidBody.isKinematic = false;
+			mRigidBody.velocity = mBehavior.getSavedVelocity();
 		}
 
 		// spawn marbles (only if possible!)
@@ -299,6 +301,8 @@ public class StaffBehavior : MonoBehaviour {
 		GameObject[] marbleArray = GameObject.FindGameObjectsWithTag ("Marble");
 		for (int i = 0; i < marbleArray.Length; i++) {
 			Rigidbody2D mRigidBody = marbleArray[i].GetComponent<Rigidbody2D> ();
+			MarbleBehavior mBehavior = marbleArray[i].GetComponent<MarbleBehavior> ();
+			mBehavior.setSavedVelocity(mRigidBody.velocity);
 			mRigidBody.isKinematic = true;
 		}
 	}

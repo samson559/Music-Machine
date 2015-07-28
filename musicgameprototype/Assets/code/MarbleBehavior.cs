@@ -12,6 +12,8 @@ public class MarbleBehavior : MonoBehaviour {
 	private Transform t;
 	private float minX, minY, maxX, maxY; // marble boundaries based on stage dimensions
 	private StageData stageData;
+	private Vector2 savedVelocity; // used when pausing and restarting physics.
+
 
 	// Use this for initialization
 	void Start () {
@@ -35,5 +37,13 @@ public class MarbleBehavior : MonoBehaviour {
 		// destroy when marble is offscreen
 		if ((t.position.x < minX) || (t.position.x > maxX) || (t.position.y < minY) || (t.position.y > maxY))
 			Destroy (gameObject);
+	}
+
+	public void setSavedVelocity(Vector2 vel) {
+		savedVelocity = vel;
+	}
+	
+	public Vector2 getSavedVelocity() {
+		return savedVelocity;
 	}
 }
