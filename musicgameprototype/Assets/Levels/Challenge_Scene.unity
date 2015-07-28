@@ -1762,6 +1762,10 @@ Prefab:
       propertyPath: timeSoundWithMetronome
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11493720, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
+      propertyPath: bpm
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
   m_IsPrefabParent: 0
