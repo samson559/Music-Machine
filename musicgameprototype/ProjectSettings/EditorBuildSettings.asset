@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Levels/DemoDemo.unity
   - enabled: 1
     path: Assets/Levels/Challenge_Scene.unity
+  - enabled: 1
+    path: Assets/Levels/Star_Wars.unity

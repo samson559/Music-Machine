@@ -217,7 +217,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 211192648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c230f5ae0707eac449d145aa66002e31, type: 3}
+  m_Script: {fileID: 11500000, guid: bc8834c4b5ff448de98d1f1230f514ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &211192651
@@ -260,14 +260,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 211192650}
-        m_MethodName: loadLevel
+        m_MethodName: LoadLevel
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Challenge_Scene
+          m_StringArgument: Star_Wars
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
