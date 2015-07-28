@@ -113,6 +113,7 @@ MonoBehaviour:
   tick: {fileID: 8300000, guid: 4c25e4b1f6130497ba8874b96be22f5f, type: 3}
   playTick: 0
   bpmText: {fileID: 0}
+  timeSoundWithMetronome: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

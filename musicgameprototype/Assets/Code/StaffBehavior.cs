@@ -274,10 +274,33 @@ public class StaffBehavior : MonoBehaviour {
 
 	public void startPlaying() {
 		playing = true;
+
+		if (Time.timeScale < 1)
+			Time.timeScale = 1;
+
+		// restart marbles
+		GameObject[] marbleArray = GameObject.FindGameObjectsWithTag ("Marble");
+		for (int i = 0; i < marbleArray.Length; i++) {
+			Rigidbody2D mRigidBody = marbleArray[i].GetComponent<Rigidbody2D> ();
+			mRigidBody.isKinematic = false;
+		}
+
+		// spawn marbles (only if possible!)
+		GameObject[] spawnerArray = GameObject.FindGameObjectsWithTag ("MarbleSpawner");
+		for (int i = 0; i < spawnerArray.Length; i++) {
+			spawnerArray[i].GetComponent<MarbleSpawnBehavior>().spawnMarble();
+		}
 	}
 
 	public void stopPlaying() {
 		playing = false;
+
+		// pause marbles
+		GameObject[] marbleArray = GameObject.FindGameObjectsWithTag ("Marble");
+		for (int i = 0; i < marbleArray.Length; i++) {
+			Rigidbody2D mRigidBody = marbleArray[i].GetComponent<Rigidbody2D> ();
+			mRigidBody.isKinematic = true;
+		}
 	}
 
 	private float calcBeatsInCompotion(GameObject[] array) {
@@ -307,5 +330,16 @@ public class StaffBehavior : MonoBehaviour {
 
 		// stop tick sound, scrolling
 		playing = false;
+
+		// destroy all marbles in scene
+		GameObject[] marbleArray = GameObject.FindGameObjectsWithTag ("Marble");
+		for (int i = 0; i < marbleArray.Length; i++) {
+			GameObject.Destroy(marbleArray[i]);
+		}
+		
+		GameObject[] spawnerArray = GameObject.FindGameObjectsWithTag ("MarbleSpawner");
+		for (int i = 0; i < spawnerArray.Length; i++) {
+			spawnerArray[i].GetComponent<MarbleSpawnBehavior>().setComplete(false);
+		}
 	}
 }
