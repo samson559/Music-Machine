@@ -6,6 +6,8 @@ public class StaffNoteData : MonoBehaviour {
 	[SerializeField] public string name;
 	[SerializeField] public float beatsPlayed;
 	[SerializeField] public int page;
+
+	private Vector3 origin;
 	
 	public StaffNoteData(string name, int bp, int page) {
 		this.name = name;
@@ -30,5 +32,13 @@ public class StaffNoteData : MonoBehaviour {
 
 	public void setName(string n) {
 		this.name = n;
+	}
+
+	public Vector3 getOrigin() {
+		return origin;
+	}
+	
+	public void setOrigin(Vector3 o) {
+		origin = o;
 	}
 }
