@@ -11,7 +11,7 @@ GameObject:
   - 222: {fileID: 22255640}
   - 114: {fileID: 11437856}
   m_Layer: 5
-  m_Name: PianoPanel
+  m_Name: PianoPanel (Old)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
