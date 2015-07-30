@@ -164,7 +164,7 @@ public class StaffBehavior : MonoBehaviour {
 		for(int i = 0; i < noteArray.Length; i++) {
 			string[] values = lines[i].Split(',');
 			noteArray[i] = Instantiate(note, Vector3.zero, Quaternion.identity) as GameObject;
-			noteArray[i].transform.parent = staff.GetComponent<RectTransform>();
+			noteArray[i].transform.SetParent(staff.GetComponent<RectTransform>());
 			StaffNoteData snd = noteArray[i].GetComponent<StaffNoteData>();
 			snd.setName(values[0]);
 			snd.setBeatsPlayed(float.Parse(values[1]));
@@ -370,7 +370,6 @@ public class StaffBehavior : MonoBehaviour {
 		}
 
 		int beat = mb.getCurrentBeat();
-		Debug.Log (beat);
 	}
 
 
