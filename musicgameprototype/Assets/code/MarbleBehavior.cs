@@ -39,6 +39,10 @@ public class MarbleBehavior : MonoBehaviour {
 		//if ((t.position.x < minX) || (t.position.x > maxX) || (t.position.y < minY) || (t.position.y > maxY))
 			//Destroy (gameObject);
 	}
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		Debug.Log (col.gameObject.name);
+	}
 
 	public void setSavedVelocity(Vector2 vel) {
 		savedVelocity = vel;

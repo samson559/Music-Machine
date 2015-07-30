@@ -43,10 +43,11 @@ public class StaffNoteData : MonoBehaviour {
 	{
 		if (mySprite.bounds.Intersects (playhead.bounds)) {
 			Debug.Log ("Playhead hit me at " + Time.realtimeSinceStartup);
-			GetComponent<Image>().color = Color.red;
+			GetComponent<Image> ().color = Color.red;
 			return true;
 		}
 		return false;
+	}
 	public Vector3 getOrigin() {
 		return origin;
 	}
