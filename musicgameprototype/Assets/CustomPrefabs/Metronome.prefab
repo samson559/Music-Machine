@@ -12,7 +12,7 @@ GameObject:
   - 82: {fileID: 8297532}
   m_Layer: 0
   m_Name: Metronome
-  m_TagString: Untagged
+  m_TagString: Metronome
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,11 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3164737c1bba549bb988740011c22aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 160
+  bpm: 120
   tick: {fileID: 8300000, guid: 4c25e4b1f6130497ba8874b96be22f5f, type: 3}
   playTick: 0
   bpmText: {fileID: 0}
-  timeSoundWithMetronome: 1
+  timeSoundWithMetronome: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
