@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelLoader : MonoBehaviour {
+public class FanDriver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
-	public void LoadLevel(string _LevelToLoad)
+	void OnTriggerStay2D(Collider2D col)
 	{
-		Application.LoadLevel (_LevelToLoad);
+		col.gameObject.GetComponent<Rigidbody2D> ().AddForce (Vector2.up*50);
 	}
 }

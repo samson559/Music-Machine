@@ -20,12 +20,13 @@ public class MarbleSpawnBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!complete && Time.timeScale != 0) {
-			spawnMarble();
-		}
+
 	}
 
-	private void spawnMarble() {
+	public void spawnMarble() {
+		if (complete)
+			return;
+
 		Transform marbleT, spawnT; // marble's transform and the spawner's transform
 		GameObject marble; // the marble to be instatiated
 		//this is weird code... I found it somewhere... I'm not sure what's going on... but it works...
@@ -39,7 +40,7 @@ public class MarbleSpawnBehavior : MonoBehaviour {
 		Vector3 newMarblePosition = new Vector3(spawnPosition.x, spawnPosition.y, spawnPosition.z);
 		
 		marbleT.position = newMarblePosition;
-		
+
 		complete = true;
 	}
 

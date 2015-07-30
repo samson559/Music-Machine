@@ -13,6 +13,8 @@ public class StaffNoteData : MonoBehaviour {
 		mySprite = transform.GetComponent<Image> ().sprite;
 		playhead = transform.parent.GetComponent<Image> ().sprite;
 	}
+
+	private Vector3 origin;
 	public StaffNoteData(string name, int bp, int page) {
 		this.name = name;
 		beatsPlayed = bp;
@@ -45,5 +47,11 @@ public class StaffNoteData : MonoBehaviour {
 			return true;
 		}
 		return false;
+	public Vector3 getOrigin() {
+		return origin;
+	}
+	
+	public void setOrigin(Vector3 o) {
+		origin = o;
 	}
 }

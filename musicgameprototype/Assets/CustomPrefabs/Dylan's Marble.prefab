@@ -13,9 +13,10 @@ GameObject:
   - 50: {fileID: 5007744}
   - 58: {fileID: 5811262}
   - 96: {fileID: 9687040}
+  - 114: {fileID: 11403810}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Marble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,7 +191,18 @@ TrailRenderer:
       serializedVersion: 2
       rgba: 16777215
   m_MinVertexDistance: .100000001
-  m_Autodestruct: 1
+  m_Autodestruct: 0
+--- !u!114 &11403810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86bd01b2817a60140a60e80f7da5bfba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11413138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,7 +239,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Autodestruct
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Marble
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
