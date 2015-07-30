@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class StaffNoteData : MonoBehaviour {
 
 	[SerializeField] public string name;
 	[SerializeField] public float beatsPlayed;
 	[SerializeField] public int page;
-	
+	 private Sprite playhead;
+	private Sprite mySprite;
+	void Start()
+	{
+		mySprite = transform.GetComponent<Image> ().sprite;
+		playhead = transform.parent.GetComponent<Image> ().sprite;
+	}
 	public StaffNoteData(string name, int bp, int page) {
 		this.name = name;
 		beatsPlayed = bp;
@@ -30,5 +36,14 @@ public class StaffNoteData : MonoBehaviour {
 
 	public void setName(string n) {
 		this.name = n;
+	}
+	public bool checkNote()
+	{
+		if (mySprite.bounds.Intersects (playhead.bounds)) {
+			Debug.Log ("Playhead hit me at " + Time.realtimeSinceStartup);
+			GetComponent<Image>().color = Color.red;
+			return true;
+		}
+		return false;
 	}
 }
