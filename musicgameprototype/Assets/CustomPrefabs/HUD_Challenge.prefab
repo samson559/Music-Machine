@@ -360,6 +360,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &116644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22443368}
+  - 222: {fileID: 22251798}
+  - 114: {fileID: 11406262}
+  - 114: {fileID: 11481922}
+  m_Layer: 5
+  m_Name: WelcomeNotification
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &117208
 GameObject:
   m_ObjectHideFlags: 1
@@ -2625,6 +2643,32 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11406262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Place note blocks to recreate the melody below!
 --- !u!114 &11406790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4678,6 +4722,7 @@ MonoBehaviour:
   speed: 1
   playing: 1
   compositionLoaded: 0
+  firstNoteHit: 0
   playheadOffset: 0
   playheadLimit: 0
   playheadRange: 0
@@ -7157,6 +7202,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   note: {fileID: 192586, guid: 20b1d619aa1c047849543669d10ae3b0, type: 2}
+--- !u!114 &11481922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99203e9ab83794067a77904c15710d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsOnScreen: 3
+  secondsToFade: 3
 --- !u!114 &11482204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8764,6 +8822,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113822}
+--- !u!222 &22251798
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116644}
 --- !u!222 &22252666
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -10100,6 +10164,23 @@ RectTransform:
   m_AnchoredPosition: {x: -37.5, y: 50}
   m_SizeDelta: {x: -75, y: 100}
   m_Pivot: {x: .5, y: .5}
+--- !u!224 &22443368
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22458028}
+  m_RootOrder: 4
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 400, y: 100}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22444350
 RectTransform:
   m_ObjectHideFlags: 1
@@ -10375,6 +10456,7 @@ RectTransform:
   - {fileID: 22484982}
   - {fileID: 22442028}
   - {fileID: 467696}
+  - {fileID: 22443368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}

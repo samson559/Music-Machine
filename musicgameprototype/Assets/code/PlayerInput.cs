@@ -20,8 +20,6 @@ public class PlayerInput : MonoBehaviour {
 		maxX = minX + stageWidth;
 		maxY = minY + stageHeight;
 
-		Time.timeScale = 0; // start the simualtion paused.
-
 	}
 	
 	// Update is called once per frame

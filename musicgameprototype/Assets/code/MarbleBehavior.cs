@@ -29,8 +29,6 @@ public class MarbleBehavior : MonoBehaviour {
 		t = GetComponent<Transform>();
 		origin = new Vector3 (t.position.x, t.position.y, t.position.z);
 
-		Debug.Log(origin);
-
 	}
 	
 	// Update is called once per frame

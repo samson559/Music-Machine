@@ -256,8 +256,6 @@ public class StaffBehavior : MonoBehaviour {
 		page = 0;
 		totalPages = Mathf.FloorToInt (calcBeatsInCompotion(noteArray) / (timesig_top * measuresDisplayed));
 
-		Debug.Log (totalPages);
-
 		compositionLoaded = true;
 	}
 
@@ -266,7 +264,7 @@ public class StaffBehavior : MonoBehaviour {
 			measureBarArray[i] = Instantiate(measureBar, Vector3.zero, Quaternion.identity) as GameObject;
 			float xPos = (i + 1) * (playheadRange/measuresDisplayed) + (noteSpacing * 1.1f);
 			Transform mTransform = measureBarArray[i].GetComponent<RectTransform>();
-			mTransform.parent = staff.GetComponent<RectTransform>();
+			mTransform.SetParent(staff.GetComponent<RectTransform>());
 			mTransform.position = new Vector3(xPos, 50, mTransform.position.z);
 		}
 	}
