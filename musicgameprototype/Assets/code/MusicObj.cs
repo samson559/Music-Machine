@@ -4,6 +4,7 @@ using System.Collections;
 public class MusicObj : MonoBehaviour {
 	[SerializeField] private AudioClip mySound;
 	private AudioSource src;
+	private string noteName; //name of the note that will play on hit
 	// Use this for initialization
 	void Start () {
 		src = gameObject.GetComponent<AudioSource>();
@@ -18,7 +19,7 @@ public class MusicObj : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		StaffBehavior staffBhv = GameObject.FindGameObjectWithTag ("Staff").GetComponent<StaffBehavior> ();
-		staffBhv.noteHit ();
+		//staffBhv.noteHit (noteName);
 		
 		MetronomeBehavior metronome = GameObject.Find ("Metronome").GetComponent<MetronomeBehavior>();
 		if (metronome.isTimeWithMetronome()) {

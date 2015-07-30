@@ -358,8 +358,8 @@ public class StaffBehavior : MonoBehaviour {
 		}
 	}
 
-	public void noteHit() { // this is called each time a musicObj is stuck by the marble
-		
+	public void noteHit(string _notename) { // this is called each time a musicObj is struck by the marble
+		Debug.Log ("something hit me!");
 		MetronomeBehavior mb = GameObject.FindGameObjectWithTag("Metronome").GetComponent<MetronomeBehavior> ();
 
 		if (!firstNoteHit) {
@@ -370,7 +370,12 @@ public class StaffBehavior : MonoBehaviour {
 		}
 
 		int beat = mb.getCurrentBeat();
+		foreach (GameObject note in noteArray)
+			note.GetComponent<StaffNoteData> ().checkNote (_notename);
 	}
-
+	public GameObject[] getNoteArray()
+	{
+		return noteArray;
+	}
 
 }

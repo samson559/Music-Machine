@@ -39,14 +39,24 @@ public class StaffNoteData : MonoBehaviour {
 	public void setName(string n) {
 		this.name = n;
 	}
-	public bool checkNote()
+	public void checkNote(string noteHit)
 	{
+		if (mySprite.bounds.Intersects (playhead.bounds)) {
+			Debug.Log ("Playhead hit me at " + Time.realtimeSinceStartup);
+			if (noteHit == name) {
+				GetComponent<Image> ().color = Color.green;
+			} else {
+				GetComponent<Image> ().color = Color.red;
+			}
+		}
+		/*
 		if (mySprite.bounds.Intersects (playhead.bounds)) {
 			Debug.Log ("Playhead hit me at " + Time.realtimeSinceStartup);
 			GetComponent<Image> ().color = Color.red;
 			return true;
 		}
 		return false;
+		*/
 	}
 	public Vector3 getOrigin() {
 		return origin;

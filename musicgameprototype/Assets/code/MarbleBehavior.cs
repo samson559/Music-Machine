@@ -13,7 +13,7 @@ public class MarbleBehavior : MonoBehaviour {
 	private float minX, minY, maxX, maxY; // marble boundaries based on stage dimensions
 	private StageData stageData;
 	private Vector2 savedVelocity; // used when pausing and restarting physics.
-
+	private StaffBehavior staff;
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +28,7 @@ public class MarbleBehavior : MonoBehaviour {
 
 		t = GetComponent<Transform>();
 		origin = new Vector3 (t.position.x, t.position.y, t.position.z);
-
+		staff = GameObject.Find ("Staff").GetComponent<StaffBehavior> ();
 	}
 	
 	// Update is called once per frame
@@ -40,7 +40,13 @@ public class MarbleBehavior : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		//Debug.Log (col.gameObject.name);
+		if (col.gameObject.GetComponent<MusicObj> () != null) {
+			foreach(GameObject note in staff.getNoteArray())
+			{
+				//RIGHT HERE
+				note.GetComponent<StaffNoteData>().checkNote("djfgnj");
+			}
+		}
 	}
 
 	public void setSavedVelocity(Vector2 vel) {
