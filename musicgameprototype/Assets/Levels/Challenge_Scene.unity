@@ -344,6 +344,10 @@ Prefab:
       propertyPath: bpmText
       value: 
       objectReference: {fileID: 1436968980}
+    - target: {fileID: 148668, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
+      propertyPath: m_TagString
+      value: Metronome
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa0f85c8b25fe44e495904cb5eeb5f19, type: 2}
   m_IsPrefabParent: 0

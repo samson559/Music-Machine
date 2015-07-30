@@ -12,6 +12,7 @@ TagManager:
   - HUD
   - Marble
   - MarbleSpawner
+  - Metronome
   layers:
   - Default
   - TransparentFX

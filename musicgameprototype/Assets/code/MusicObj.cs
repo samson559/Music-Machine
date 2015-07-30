@@ -17,6 +17,8 @@ public class MusicObj : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
+		StaffBehavior staffBhv = GameObject.FindGameObjectWithTag ("Staff").GetComponent<StaffBehavior> ();
+		staffBhv.noteHit ();
 		
 		MetronomeBehavior metronome = GameObject.Find ("Metronome").GetComponent<MetronomeBehavior>();
 		if (metronome.isTimeWithMetronome()) {

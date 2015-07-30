@@ -19,6 +19,8 @@ public class MetronomeBehavior : MonoBehaviour {
 	private AudioSource tickSource;
 	private float secToNextBeat; // seconds to next beat
 	private float beatInterval;
+	private bool activated; // when the metronome is not activated, it doesn't keep track of beats
+	private int beat;
 
 
 	// Use this for initialization
@@ -28,16 +30,24 @@ public class MetronomeBehavior : MonoBehaviour {
 
 		beatInterval = 60f / bpm;
 		secToNextBeat = beatInterval;
+
+		activated = false;
+		beat = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		secToNextBeat -= Time.deltaTime;
+
 		bpmText.text = "BPM: " + ((int)bpm).ToString();
 
-		if (secToNextBeat <= 0) {
-			secToNextBeat += beatInterval;
-			if(playTick) tickSource.PlayOneShot(tick);
+		if (activated) { // tick tock
+			secToNextBeat -= Time.deltaTime;
+			
+			if (secToNextBeat <= 0) {
+				beat++;
+				secToNextBeat += beatInterval;
+				if(playTick) tickSource.PlayOneShot(tick);
+			}
 		}
 	}
 	
@@ -63,6 +73,18 @@ public class MetronomeBehavior : MonoBehaviour {
 
 	public bool isTimeWithMetronome() {
 		return timeSoundWithMetronome;
+	}
+
+	public void setActivated(bool a) {
+		activated = a;
+	}
+
+	public int getCurrentBeat() {
+		return beat;
+	}
+
+	public void setCurrentBeat(int b) {
+		beat = b;
 	}
 
 }

@@ -28,13 +28,15 @@ public class StaffBehavior : MonoBehaviour {
 	private int counter;
 
 	public float speed; // speed at which the playhead moves
-	public bool playing, compositionLoaded; // is the staff playing music?
+	public bool playing, compositionLoaded, firstNoteHit; // is the staff playing music?
 	public float playheadOffset, playheadLimit, playheadRange; // offset from screen center, make room for time signature, clef
 	private GameObject[] noteArray; // array of notes which are loaded from txt file
 	private int page, totalPages; // current page of composition;
 	private float minX, maxX, rightLimit, leftLimit;
 	private RectTransform staffTransform, phTransform, tstopTransform, tsbottomTransform, tcTransform;
 	private GameObject[] measureBarArray; // array of measure bars;
+	private float noteSpacing; // spacing between notes
+
 
 	// Use this for initialization
 	void Start () {
@@ -51,11 +53,11 @@ public class StaffBehavior : MonoBehaviour {
 		tsbottomTransform = timesig_bottom_image.GetComponent<RectTransform>();
 		tcTransform = treble_clef.GetComponent<RectTransform> ();
 
-		staffTransform.parent = GameObject.FindGameObjectWithTag ("HUD").GetComponent<RectTransform> ();
-		phTransform.parent = staffTransform;
-		tstopTransform.parent = staffTransform;
-		tsbottomTransform.parent = staffTransform;
-		tcTransform.parent = staffTransform;
+		staffTransform.SetParent (GameObject.FindGameObjectWithTag ("HUD").GetComponent<RectTransform> ());
+		phTransform.SetParent (staffTransform);
+		tstopTransform.parent.SetParent (staffTransform);
+		tsbottomTransform.parent.SetParent (staffTransform);
+		tcTransform.parent.SetParent (staffTransform);
 
 		leftLimit = 100;
 		rightLimit = 100;
@@ -146,17 +148,12 @@ public class StaffBehavior : MonoBehaviour {
 	}
 
 	public void loadComposition() {
-		float noteSpacing = (playheadRange / (timesig_top * measuresDisplayed));
+		noteSpacing = (playheadRange / (timesig_top * measuresDisplayed));
 		
 		// load measure bars
+		
 		measureBarArray = new GameObject[measuresDisplayed];
-		for (int i = 0; i < measureBarArray.Length; i++) {
-			measureBarArray[i] = Instantiate(measureBar, Vector3.zero, Quaternion.identity) as GameObject;
-			float xPos = (i + 1) * (playheadRange/measuresDisplayed) + (noteSpacing * 1.1f);
-			Transform mTransform = measureBarArray[i].GetComponent<RectTransform>();
-			mTransform.parent = staff.GetComponent<RectTransform>();
-			mTransform.position = new Vector3(xPos, 50, mTransform.position.z);
-		}
+		loadMeasureBars ();
 
 		string[] lines = composition.ToString().Split('\n');
 		noteArray = new GameObject[lines.Length];
@@ -264,6 +261,16 @@ public class StaffBehavior : MonoBehaviour {
 		compositionLoaded = true;
 	}
 
+	private void loadMeasureBars() {
+		for (int i = 0; i < measureBarArray.Length; i++) {
+			measureBarArray[i] = Instantiate(measureBar, Vector3.zero, Quaternion.identity) as GameObject;
+			float xPos = (i + 1) * (playheadRange/measuresDisplayed) + (noteSpacing * 1.1f);
+			Transform mTransform = measureBarArray[i].GetComponent<RectTransform>();
+			mTransform.parent = staff.GetComponent<RectTransform>();
+			mTransform.position = new Vector3(xPos, 50, mTransform.position.z);
+		}
+	}
+
 	public void setPlaying(bool play) {
 		playing = play;
 	}
@@ -273,7 +280,7 @@ public class StaffBehavior : MonoBehaviour {
 	}
 
 	public void startPlaying() {
-		playing = true;
+		//playing = true; // 'playing' is now only set to true after firstNoteHit is true
 
 		if (Time.timeScale < 1)
 			Time.timeScale = 1;
@@ -319,8 +326,14 @@ public class StaffBehavior : MonoBehaviour {
 
 	public void resetStaff() {
 		page = 0; // go back to first page
+		firstNoteHit = false;
 
-		//reset all notes to their original positions
+		// deactivate metronome
+		MetronomeBehavior mb = GameObject.FindGameObjectWithTag("Metronome").GetComponent<MetronomeBehavior> ();
+		mb.setActivated(false);
+		mb.setCurrentBeat (0);
+
+		//reset all notes on the staff to their original positions
 		for (int i = 0; i < noteArray.Length; i++) {
 			Transform nTransform = noteArray[i].GetComponent<Transform>();
 			Vector3 origin = noteArray[i].GetComponent<StaffNoteData>().getOrigin();
@@ -346,4 +359,21 @@ public class StaffBehavior : MonoBehaviour {
 			spawnerArray[i].GetComponent<MarbleSpawnBehavior>().setComplete(false);
 		}
 	}
+
+	public void noteHit() { // this is called each time a musicObj is stuck by the marble
+		
+		MetronomeBehavior mb = GameObject.FindGameObjectWithTag("Metronome").GetComponent<MetronomeBehavior> ();
+
+		if (!firstNoteHit) {
+			firstNoteHit = true;
+			playing = true;
+
+			mb.setActivated(true);
+		}
+
+		int beat = mb.getCurrentBeat();
+		Debug.Log (beat);
+	}
+
+
 }
