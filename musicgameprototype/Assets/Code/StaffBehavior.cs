@@ -376,6 +376,8 @@ public class StaffBehavior : MonoBehaviour {
 			Transform nTransform = noteArray[i].GetComponent<Transform>();
 			Vector3 origin = noteArray[i].GetComponent<StaffNoteData>().getOrigin();
 			nTransform.position = origin;
+			noteArray[i].gameObject.GetComponent<Image>().color = Color.white;
+			Debug.Log("resetcolors");
 		}
 
 		// reset playhead position

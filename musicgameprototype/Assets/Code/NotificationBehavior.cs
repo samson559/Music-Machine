@@ -32,7 +32,13 @@ public class NotificationBehavior : MonoBehaviour {
 			text.color = c;
 		}
 
-		if (counter >= (secondsToFade + secondsOnScreen))
-			Destroy (gameObject);
+		if (counter >= (secondsToFade + secondsOnScreen)) {
+			gameObject.SetActive (false);
+			Color c = text.color;
+			c.a = 1;
+			text.color = c;
+			counter =0f;
+		}
+			//Destroy (gameObject);
 	}
 }
