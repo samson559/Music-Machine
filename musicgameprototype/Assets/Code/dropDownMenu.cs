@@ -16,7 +16,6 @@ public class dropDownMenu : MonoBehaviour {
 	{
 
 		if (panel.activeSelf == false) {
-			Debug.LogError ("In here");
 			panel.SetActive (true);
 		} else if (panel.activeSelf == true) {
 			panel.SetActive(false);

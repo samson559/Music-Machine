@@ -14,7 +14,6 @@ public class HelpPanelSpawner : MonoBehaviour {
 	}
 	public void showPanel()
 	{
-		Debug.Log ("try");
 		Instantiate<GameObject> (panel);
 	}
 }
