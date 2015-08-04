@@ -10,12 +10,12 @@ GameObject:
   - 4: {fileID: 484440}
   - 33: {fileID: 3310012}
   - 23: {fileID: 2399246}
+  - 114: {fileID: 11429714}
   - 61: {fileID: 6151818}
   - 114: {fileID: 11424996}
-  - 114: {fileID: 11429714}
   m_Layer: 0
   m_Name: MusicCannon
-  m_TagString: Untagged
+  m_TagString: MarbleSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 196.389999, y: 47.8899994, z: 55.7299995}
+  m_LocalPosition: {x: 200.970001, y: 44.1800003, z: 56}
   m_LocalScale: {x: 11.2783527, y: 13.3126612, z: 11.2783604}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 105010}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 4.92855906e-06, y: 1.1920929e-07}
   serializedVersion: 2
