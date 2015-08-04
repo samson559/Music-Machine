@@ -43,7 +43,7 @@ public class musicObjMaker : MonoBehaviour {
 //		Object go = Instantiate(note, where, Quaternion.identity);
 //		Nate, we're going to try this for awhile
 
-		Vector3 where = new Vector3 (Camera.main.transform.position.x, Camera.main.transform.position.y, 56.13f);
+		Vector3 where = new Vector3 (Camera.main.transform.position.x, Camera.main.transform.position.y+7, 56.13f);
 		GameObject newNote = Instantiate(note, where, Quaternion.identity) as GameObject;
 		newNote.GetComponent<MusicObj> ().setNoteName (noteName);
 
