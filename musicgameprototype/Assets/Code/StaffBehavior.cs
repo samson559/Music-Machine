@@ -19,6 +19,14 @@ public class StaffBehavior : MonoBehaviour {
 	[SerializeField] public Image timesig_bottom_image; // bottom time signature number (the "4" in "3/4" time)
 	[SerializeField] public Image treble_clef; // treble clef image
 	[SerializeField] public Image measure_bar; // measure bar image
+	[SerializeField] public Sprite A_sprite; // A image
+	[SerializeField] public Sprite B_sprite; // B image
+	[SerializeField] public Sprite C_sprite; // C image
+	[SerializeField] public Sprite D_sprite; // D image
+	[SerializeField] public Sprite E_sprite; // E image
+	[SerializeField] public Sprite F_sprite; // F image
+	[SerializeField] public Sprite G_sprite; // G image
+	[SerializeField] public GameObject noteName; // G image
 	[SerializeField] public Sprite sprite_3; // top time signature number (the "3" in "3/4" time)
 	[SerializeField] public Sprite sprite_4; // bottom time signature number (the "4" in "3/4" time)
 	[SerializeField] public TextAsset composition;
@@ -31,6 +39,7 @@ public class StaffBehavior : MonoBehaviour {
 	public bool playing, compositionLoaded, firstNoteHit; // is the staff playing music?
 	public float playheadOffset, playheadLimit, playheadRange; // offset from screen center, make room for time signature, clef
 	private GameObject[] noteArray; // array of notes which are loaded from txt file
+	private GameObject[] noteNameArray; // array of note names, which rise and fade
 	private int page, totalPages; // current page of composition;
 	private float minX, maxX, rightLimit, leftLimit;
 	private RectTransform staffTransform, phTransform, tstopTransform, tsbottomTransform, tcTransform;
@@ -113,9 +122,6 @@ public class StaffBehavior : MonoBehaviour {
 		speed = 0f;
 		
 		if (playing && compositionLoaded) { // only scroll
-
-
-
 			GameObject metronome = GameObject.Find ("Metronome");
 			
 			// calculate speed
@@ -130,8 +136,6 @@ public class StaffBehavior : MonoBehaviour {
 				phTransform.position = new Vector3 (minX, playheadOrigin.y, playheadOrigin.z);
 				page++;
 				shiftNotes(1);
-				Debug.Log ("page: " + page);
-				Debug.Log ("totalPages: " + totalPages);
 				if(page >= totalPages) resetStaff();
 			} else phTransform.position = new Vector3 (playheadOrigin.x + (speed * Time.deltaTime), playheadOrigin.y, playheadOrigin.z);
 		}
@@ -157,6 +161,7 @@ public class StaffBehavior : MonoBehaviour {
 
 		string[] lines = composition.ToString().Split('\n');
 		noteArray = new GameObject[lines.Length];
+		noteNameArray = new GameObject[lines.Length];
 		float totalBeats = 0;
 		int currentPage = 1;
 
@@ -247,10 +252,45 @@ public class StaffBehavior : MonoBehaviour {
 
 			float noteXOffset = totalBeats * noteSpacing;
 			notePos.x += minX + noteXOffset;
-			totalBeats += snd.getBeatsPlayed();
 
 			nRTransform.position = new Vector3(notePos.x, notePos.y, notePos.z);
 			noteArray[i].GetComponent<StaffNoteData>().setOrigin(nRTransform.position);
+
+			noteNameArray[i] = Instantiate(noteName, Vector3.zero, Quaternion.identity) as GameObject;
+			Vector3 initPos = new Vector3(notePos.x, 100f, notePos.z);
+			ShowNoteName snn = noteNameArray[i].GetComponent<ShowNoteName> ();
+			RectTransform nnTrans = noteNameArray[i].GetComponent<RectTransform> ();
+			Image nnImage = noteNameArray[i].GetComponent<Image> ();
+			nnTrans.position = initPos;
+			snn.setInitPos(initPos);
+			snn.setActivateOnBeat(Mathf.FloorToInt(totalBeats));
+
+			char[] valCharArray = values[0].ToCharArray();
+			switch(valCharArray[0]) {
+			case 'A':
+				nnImage.sprite = A_sprite;
+				break;
+			case 'B':
+				nnImage.sprite = B_sprite;
+				break;
+			case 'C':
+				nnImage.sprite = C_sprite;
+				break;
+			case 'D':
+				nnImage.sprite = D_sprite;
+				break;
+			case 'E':
+				nnImage.sprite = E_sprite;
+				break;
+			case 'F':
+				nnImage.sprite = F_sprite;
+				break;
+			case 'G':
+				nnImage.sprite = G_sprite;
+				break;
+			}
+			
+			totalBeats += snd.getBeatsPlayed();
 		}
 
 		page = 0;
@@ -359,7 +399,8 @@ public class StaffBehavior : MonoBehaviour {
 	}
 
 	public void noteHit(string _notename) { // this is called each time a musicObj is struck by the marble
-		Debug.Log ("something hit me!");
+		if (_notename == null)
+			_notename = " ";
 		MetronomeBehavior mb = GameObject.FindGameObjectWithTag("Metronome").GetComponent<MetronomeBehavior> ();
 
 		if (!firstNoteHit) {
@@ -370,9 +411,48 @@ public class StaffBehavior : MonoBehaviour {
 		}
 
 		int beat = mb.getCurrentBeat();
+
+		// check if the right note is hit at the right time
+		GameObject currentNote = getNoteAtBeat (beat);
+		
+		// this happens when the marker is past the end of the song, and there are no more notes in the composition
+		if (currentNote == null)
+			return;
+
+		string targetNote = currentNote.GetComponent<StaffNoteData> ().getName ();
+
+		if (targetNote == _notename)
+			currentNote.GetComponent<Image> ().color = Color.green;
+		else
+			currentNote.GetComponent<Image> ().color = Color.red;
+
+		Debug.Log ("target note: " + targetNote + ", note hit: " + _notename);
+		/*
 		foreach (GameObject note in noteArray)
 			note.GetComponent<StaffNoteData> ().checkNote (_notename);
+		*/
 	}
+
+	public GameObject getNoteAtBeat(int beat) {
+		int beatIndex = 0;
+
+		for (int i = 0; i < noteArray.Length; i++) {
+			StaffNoteData snd = noteArray[i].GetComponent<StaffNoteData>();
+
+			if(beatIndex == beat) {
+				return noteArray[i];
+			}
+
+			beatIndex += Mathf.FloorToInt(snd.beatsPlayed); // fyi this doesn't work on beat 1.5 or any fractional beat...
+
+			if(beatIndex > beat)
+				return null;
+		}
+
+		return noteName;
+	}
+
+
 	public GameObject[] getNoteArray()
 	{
 		return noteArray;

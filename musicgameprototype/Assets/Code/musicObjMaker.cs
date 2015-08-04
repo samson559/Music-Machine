@@ -22,7 +22,7 @@ public class musicObjMaker : MonoBehaviour {
 //		makeNote ();
 //	}
 
-	public void makeNote() {
+	public void makeNote(string noteName) {
 //		Transform noteT = note.GetComponent<Transform> ();
 //
 //		// create plane on which to place note
@@ -42,8 +42,10 @@ public class musicObjMaker : MonoBehaviour {
 //		// instantiate object
 //		Object go = Instantiate(note, where, Quaternion.identity);
 //		Nate, we're going to try this for awhile
+
 		Vector3 where = new Vector3 (Camera.main.transform.position.x, Camera.main.transform.position.y, 56.13f);
-		Object go = Instantiate(note, where, Quaternion.identity);
+		GameObject newNote = Instantiate(note, where, Quaternion.identity) as GameObject;
+		newNote.GetComponent<MusicObj> ().setNoteName (noteName);
 	}
 
 }

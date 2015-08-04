@@ -39,6 +39,7 @@ public class StaffNoteData : MonoBehaviour {
 	public void setName(string n) {
 		this.name = n;
 	}
+	/*
 	public void checkNote(string noteHit)
 	{
 		if (mySprite.bounds.Intersects (playhead.bounds)) {
@@ -56,8 +57,9 @@ public class StaffNoteData : MonoBehaviour {
 			return true;
 		}
 		return false;
-		*/
 	}
+	
+		*/
 	public Vector3 getOrigin() {
 		return origin;
 	}

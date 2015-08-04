@@ -78,6 +78,10 @@ public class MetronomeBehavior : MonoBehaviour {
 	public void setActivated(bool a) {
 		activated = a;
 	}
+	
+	public bool isActivated() {
+		return activated;
+	}
 
 	public int getCurrentBeat() {
 		return beat;

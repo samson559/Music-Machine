@@ -18,8 +18,6 @@ public class MusicObj : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		StaffBehavior staffBhv = GameObject.FindGameObjectWithTag ("Staff").GetComponent<StaffBehavior> ();
-		//staffBhv.noteHit (noteName);
 		
 		MetronomeBehavior metronome = GameObject.Find ("Metronome").GetComponent<MetronomeBehavior>();
 		if (metronome.isTimeWithMetronome()) {
@@ -29,5 +27,22 @@ public class MusicObj : MonoBehaviour {
 		} else {
 			src.PlayOneShot (mySound);
 		}
+
+		GameObject staff = GameObject.FindGameObjectWithTag ("Staff");
+		if (staff == null)
+			return; // this will happen in Sandbox mode, where the staff isn't used
+
+		// code should only be accessed in Challenge mode;
+		StaffBehavior staffBhv = GameObject.FindGameObjectWithTag ("Staff").GetComponent<StaffBehavior> ();
+		staffBhv.noteHit (noteName);
 	}
+
+	public void setNoteName(string name) {
+		noteName = name;
+	}
+
+	public string getNoteName() {
+		return noteName;
+	}
+
 }

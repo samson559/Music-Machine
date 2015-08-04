@@ -28,7 +28,7 @@ public class MarbleBehavior : MonoBehaviour {
 
 		t = GetComponent<Transform>();
 		origin = new Vector3 (t.position.x, t.position.y, t.position.z);
-		staff = GameObject.Find ("Staff").GetComponent<StaffBehavior> ();
+		staff = GameObject.Find ("staff").GetComponent<StaffBehavior> ();
 	}
 	
 	// Update is called once per frame
@@ -40,13 +40,16 @@ public class MarbleBehavior : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
+		/*
 		if (col.gameObject.GetComponent<MusicObj> () != null) {
 			foreach(GameObject note in staff.getNoteArray())
 			{
 				//RIGHT HERE
-				note.GetComponent<StaffNoteData>().checkNote("djfgnj");
+				// a marble hits more than just notes, it doesn't make sense to check notes here.
+				//note.GetComponent<StaffNoteData>().checkNote("djfgnj");
 			}
 		}
+		*/
 	}
 
 	public void setSavedVelocity(Vector2 vel) {
