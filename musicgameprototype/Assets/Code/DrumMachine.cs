@@ -52,7 +52,6 @@ public class DrumMachine : MonoBehaviour
 					cymbals1.gameObject.GetComponent<AudioSource>();
 				}
 				secToNextBeat += beatInterval;
-				tickSource.PlayOneShot(tick);
 			}
 		}
 	}
