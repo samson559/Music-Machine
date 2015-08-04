@@ -13,6 +13,7 @@ TagManager:
   - Marble
   - MarbleSpawner
   - Metronome
+  - PianoPanel
   layers:
   - Default
   - TransparentFX

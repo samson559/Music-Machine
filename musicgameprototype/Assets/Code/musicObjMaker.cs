@@ -46,6 +46,9 @@ public class musicObjMaker : MonoBehaviour {
 		Vector3 where = new Vector3 (Camera.main.transform.position.x, Camera.main.transform.position.y, 56.13f);
 		GameObject newNote = Instantiate(note, where, Quaternion.identity) as GameObject;
 		newNote.GetComponent<MusicObj> ().setNoteName (noteName);
+
+		GameObject pianoPanel = GameObject.FindGameObjectWithTag ("PianoPanel");
+		pianoPanel.GetComponent<dropDownMenu> ().toggleMenu ();
 	}
 
 }

@@ -26,7 +26,7 @@ public class StaffBehavior : MonoBehaviour {
 	[SerializeField] public Sprite E_sprite; // E image
 	[SerializeField] public Sprite F_sprite; // F image
 	[SerializeField] public Sprite G_sprite; // G image
-	[SerializeField] public GameObject noteName; // G image
+	[SerializeField] public GameObject noteName; // the prefab that contains the A,B,C, etc. image
 	[SerializeField] public Sprite sprite_3; // top time signature number (the "3" in "3/4" time)
 	[SerializeField] public Sprite sprite_4; // bottom time signature number (the "4" in "3/4" time)
 	[SerializeField] public TextAsset composition;
