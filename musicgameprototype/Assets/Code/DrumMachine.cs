@@ -17,30 +17,42 @@ public class DrumMachine : MonoBehaviour
 	[SerializeField] private AudioClip kick;
 
 	private AudioSource drums1;
-	private AudioSource drums2;
+	//private AudioSource drums2;
 	private AudioSource cymbals1;
-	private AudioSource cymbals2;
-	private bool activated = false;
+	//private AudioSource cymbals2;
+
+	private float secToNextBeat; // seconds to next beat
+	private float beatInterval;
+	private bool activated;
 	private int beat = 1;
 	private float bpm;
 
-	void Awake()
+	void Start()
 	{
 		bpm = gameObject.GetComponent<MetronomeBehavior>().getBPM();
+		activated = false;
+		beatInterval = 60f / bpm;
+		secToNextBeat = beatInterval;
 	}
 
 	void Update () 
 	{
-		
-		bpmText.text = "BPM: " + ((int)bpm).ToString();
-		
 		if (activated) { // tick tock
 			secToNextBeat -= Time.deltaTime;
 			
-			if (secToNextBeat <= 0) {
-				beat++;
+			if (secToNextBeat <= 0) 
+			{
+				if (beat > 8)
+					beat = 1;
+				else
+					beat++;
+
+				if (beat == 1)
+				{
+					cymbals1.gameObject.GetComponent<AudioSource>();
+				}
 				secToNextBeat += beatInterval;
-				if(playTick) tickSource.PlayOneShot(tick);
+				tickSource.PlayOneShot(tick);
 			}
 		}
 	}
