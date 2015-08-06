@@ -26,7 +26,7 @@ public class MarbleSpawnBehavior : MonoBehaviour {
 	public void spawnMarble() {
 		if (complete)
 			return;
-
+		CannonRotator cr = GetComponent<CannonRotator> ();
 		Transform marbleT, spawnT; // marble's transform and the spawner's transform
 		GameObject marble; // the marble to be instatiated
 		//this is weird code... I found it somewhere... I'm not sure what's going on... but it works...
@@ -36,7 +36,7 @@ public class MarbleSpawnBehavior : MonoBehaviour {
 		marbleT = marble.GetComponent<Transform>();
 		spawnT = GetComponent<Transform>();
 		
-		Vector3 spawnPosition = spawnT.position;
+		Vector3 spawnPosition = spawnT.position + cr.getBobOffset(); // compensate for moving cannon
 		Vector3 newMarblePosition = new Vector3(spawnPosition.x, spawnPosition.y, spawnPosition.z);
 		
 		marbleT.position = newMarblePosition;

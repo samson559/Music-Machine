@@ -45,6 +45,7 @@ public class StaffBehavior : MonoBehaviour {
 	private RectTransform staffTransform, phTransform, tstopTransform, tsbottomTransform, tcTransform;
 	private GameObject[] measureBarArray; // array of measure bars;
 	private float noteSpacing; // spacing between notes
+	private StageData stageData;
 
 
 	// Use this for initialization
@@ -81,6 +82,8 @@ public class StaffBehavior : MonoBehaviour {
 		tcTransform.position = new Vector3 (minX - 80, tcTransform.position.y, tcTransform.position.z);
 
 		speed = 0f;
+
+		stageData = GameObject.FindObjectOfType<StageData> ();
 
 		loadComposition ();
 	}
@@ -142,12 +145,70 @@ public class StaffBehavior : MonoBehaviour {
 		
 	}
 
+	public void resetNoteColors() {
+
+		for (int i = 0; i < noteArray.Length; i++) {
+			Image noteImage = noteArray[i].GetComponent<Image> ();
+			noteImage.color = Color.white;
+		}
+
+	}
+
+	public void colorizeNotes() {
+		Color c_color = new Color (255f/255f, 0f/255f, 0f/255f);
+		Color d_color = new Color (255f/255f, 115f/255f, 0f/255f);
+		Color e_color = new Color (250f/255f, 255f/255f, 0f/255f);
+		Color f_color = new Color (50f/255f, 255f/255f, 0f/255f);
+		Color g_color = new Color (0f/255f, 255f/255f, 255f/255f);
+		Color a_color = new Color (0f/255f, 15f/255f, 255f/255f);
+		Color b_color = new Color (255f/255f, 0f/255f, 230f/255f);
+
+		Debug.Log (stageData.getDifficulty());
+
+		for (int i = 0; i < noteArray.Length; i++) {
+			string noteName = noteArray[i].GetComponent<StaffNoteData>().name;
+			string n = noteName.Substring(0,1);
+			Image noteImage = noteArray[i].GetComponent<Image> ();
+
+			switch(n) {
+			case "C":
+				noteImage.color = c_color;
+				break;
+			case "D":
+				noteImage.color = d_color;
+				break;
+			case "E":
+				noteImage.color = e_color;
+				break;
+			case "F":
+				noteImage.color = f_color;
+				break;
+			case "G":
+				noteImage.color = g_color;
+				break;
+			case "A":
+				noteImage.color = a_color;
+				break;
+			case "B":
+				noteImage.color = b_color;
+				break;
+			}
+		}
+	}
+
 	private void shiftNotes(int pagesToShift) {
 		for (int i = 0; i < noteArray.Length; i++) {
 			Transform nTransform = noteArray[i].GetComponent<Transform>();
 			Vector3 origin = nTransform.position;
 			Vector3 newPos = new Vector3(origin.x - (pagesToShift * playheadRange), origin.y, origin.z);
 			nTransform.position = newPos;
+		}
+
+		for (int i = 0; i < noteNameArray.Length; i++) {
+			Transform nnTransform = noteNameArray[i].GetComponent<Transform>();
+			Vector3 origin = nnTransform.position;
+			Vector3 newPos = new Vector3(origin.x - (pagesToShift * playheadRange), origin.y, origin.z);
+			nnTransform.position = newPos;
 		}
 	}
 
@@ -260,10 +321,11 @@ public class StaffBehavior : MonoBehaviour {
 			Vector3 initPos = new Vector3(notePos.x, 100f, notePos.z);
 			ShowNoteName snn = noteNameArray[i].GetComponent<ShowNoteName> ();
 			RectTransform nnTrans = noteNameArray[i].GetComponent<RectTransform> ();
+			nnTrans.SetParent(staffTransform);
 			Image nnImage = noteNameArray[i].GetComponent<Image> ();
 			nnTrans.position = initPos;
 			snn.setInitPos(initPos);
-			snn.setActivateOnBeat(Mathf.FloorToInt(totalBeats));
+			snn.setActivateOnBeat(totalBeats);
 
 			char[] valCharArray = values[0].ToCharArray();
 			switch(valCharArray[0]) {
@@ -289,12 +351,15 @@ public class StaffBehavior : MonoBehaviour {
 				nnImage.sprite = G_sprite;
 				break;
 			}
-			
+
 			totalBeats += snd.getBeatsPlayed();
 		}
 
 		page = 0;
 		totalPages = Mathf.FloorToInt (calcBeatsInCompotion(noteArray) / (timesig_top * measuresDisplayed));
+
+		if (stageData.getDifficulty () == 0)
+			colorizeNotes ();
 
 		compositionLoaded = true;
 	}
@@ -377,7 +442,11 @@ public class StaffBehavior : MonoBehaviour {
 			Vector3 origin = noteArray[i].GetComponent<StaffNoteData>().getOrigin();
 			nTransform.position = origin;
 			noteArray[i].gameObject.GetComponent<Image>().color = Color.white;
-			Debug.Log("resetcolors");
+		}
+
+		// reset note names
+		for (int i = 0; i < noteNameArray.Length; i++) {
+			noteNameArray[i].GetComponent<ShowNoteName> ().reset ();
 		}
 
 		// reset playhead position
@@ -416,6 +485,7 @@ public class StaffBehavior : MonoBehaviour {
 
 		// check if the right note is hit at the right time
 		GameObject currentNote = getNoteAtBeat (beat);
+		GameObject currentNoteName = getNoteNameAtBeat (beat);
 		
 		// this happens when the marker is past the end of the song, and there are no more notes in the composition
 		if (currentNote == null)
@@ -423,12 +493,14 @@ public class StaffBehavior : MonoBehaviour {
 
 		string targetNote = currentNote.GetComponent<StaffNoteData> ().getName ();
 
-		if (targetNote == _notename)
+		if (targetNote == _notename) {
 			currentNote.GetComponent<Image> ().color = Color.green;
+			if(stageData.getDifficulty () == 2) currentNoteName.GetComponent<ShowNoteName> ().activate ();
+		}
 		else
 			currentNote.GetComponent<Image> ().color = Color.red;
 
-		Debug.Log ("target note: " + targetNote + ", note hit: " + _notename);
+		//Debug.Log ("target note: " + targetNote + ", note hit: " + _notename);
 		/*
 		foreach (GameObject note in noteArray)
 			note.GetComponent<StaffNoteData> ().checkNote (_notename);
@@ -451,7 +523,28 @@ public class StaffBehavior : MonoBehaviour {
 				return null;
 		}
 
-		return noteName;
+		return null;
+	}
+
+	
+	
+	public GameObject getNoteNameAtBeat(int beat) {
+		int beatIndex = 0;
+		
+		for (int i = 0; i < noteArray.Length; i++) {
+			StaffNoteData snd = noteArray[i].GetComponent<StaffNoteData>();
+			
+			if(beatIndex == beat) {
+				return noteNameArray[i];
+			}
+			
+			beatIndex += Mathf.FloorToInt(snd.beatsPlayed); // fyi this doesn't work on beat 1.5 or any fractional beat...
+			
+			if(beatIndex > beat)
+				return null;
+		}
+		
+		return null;
 	}
 
 

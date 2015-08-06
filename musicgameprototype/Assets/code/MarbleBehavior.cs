@@ -19,7 +19,7 @@ public class MarbleBehavior : MonoBehaviour {
 	void Start () {
 		GameObject camera = GameObject.Find ("Camera");
 
-		stageData = Camera.main.GetComponent<StageData> () as StageData;
+		stageData = GameObject.FindObjectOfType<StageData> ();
 
 		minX = -stageData.getStageWidth () / 2;
 		maxX = minX + stageData.getStageWidth ();

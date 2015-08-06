@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerInput : MonoBehaviour {
 	private Vector3 dragOrigin;
 	private float minX, minY, maxX, maxY; // min and max X and Y position for camera, based on size of stage
+	private StageData sd;
 
 	/*
 	 * This class handles player input, such as pressing the pause button to pause playback, pressing the reset button to reset the level, etc.
@@ -12,8 +13,9 @@ public class PlayerInput : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		float stageWidth = (gameObject.GetComponent<StageData> () as StageData).getStageWidth();
-		float stageHeight = (gameObject.GetComponent<StageData> () as StageData).getStageHeight();
+		sd = GameObject.FindObjectOfType<StageData> ();
+		float stageWidth = sd.getStageWidth();
+		float stageHeight = sd.getStageHeight();
 		
 		minX = (gameObject.GetComponent<Transform> () as Transform).position.x - (stageWidth / 2);
 		minY = (gameObject.GetComponent<Transform> () as Transform).position.y - (stageHeight / 2);
@@ -26,7 +28,7 @@ public class PlayerInput : MonoBehaviour {
 	void Update () {
 
 
-		if(Input.GetButton ("panOption")) 
+		if(Input.GetButton ("panOption"))
 			mousePan ();
 
 		

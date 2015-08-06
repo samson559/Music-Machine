@@ -18,6 +18,7 @@ public class StaffNoteData : MonoBehaviour {
 	public StaffNoteData(string name, int bp, int page) {
 		this.name = name;
 		beatsPlayed = bp;
+		page = page;
 	}
 
 	public void setPage(int p) {

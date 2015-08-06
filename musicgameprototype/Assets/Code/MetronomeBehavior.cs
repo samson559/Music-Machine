@@ -46,8 +46,11 @@ public class MetronomeBehavior : MonoBehaviour {
 			if (secToNextBeat <= 0) {
 				beat++;
 				secToNextBeat += beatInterval;
-				if(playTick) tickSource.PlayOneShot(tick);
+				if (playTick)
+					tickSource.PlayOneShot (tick);
 			}
+		} else {
+			secToNextBeat = beatInterval;
 		}
 	}
 	
